@@ -37,9 +37,10 @@ namespace OpenTKTriangle
             GL.Color3(0.0f, 1.0f, 0.2f);
             GL.Begin(PrimitiveType.Triangles);
 
-            GL.Vertex2(vertices[0], vertices[1]);
-            GL.Vertex2(vertices[2], vertices[3]);
-            GL.Vertex2(vertices[4], vertices[5]);
+            for (int i = 0; i < vertices.Length; i += 2)
+            {
+                GL.Vertex2(vertices[i], vertices[i+1]);
+            }
 
             GL.End();
 
