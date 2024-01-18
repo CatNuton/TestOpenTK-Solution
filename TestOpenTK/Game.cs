@@ -34,11 +34,7 @@ namespace OpenTKTriangle
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            GL.LineWidth(5.0f);
-            GL.PointSize(8.0f);
-
             GL.Color3(0.0f, 1.0f, 0.2f);
-
             GL.Begin(PrimitiveType.Triangles);
 
             GL.Vertex2(vertices[0], vertices[1]);
