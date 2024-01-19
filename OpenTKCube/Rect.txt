@@ -1,0 +1,12 @@
+﻿                // Top-Left
+                GL.Color3(255.0f, 0.0f, 0.0f);
+                GL.Vertex2(-80.0f, 80.0f);
+                // Top-Right
+                GL.Color3(0.0f, 255.0f, 0.0f);
+                GL.Vertex2(80.0f, 80.0f);
+                // Bottom-Right
+                GL.Color3(0.0f, 0.0f, 255.0f);
+                GL.Vertex2(80.0f, -80.0f);
+                // Bottom-Left
+                GL.Color3(255.0f, 255.0f, 255.0f);
+                GL.Vertex2(-80.0f, -80.0f);
