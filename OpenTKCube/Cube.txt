@@ -1,42 +1,41 @@
-﻿        double[] fVertices =
-        {
-            -0.5f,  0.5f, 0.0f,  //Top-left vertex
-            0.5f,  0.5f, 0.0f,  //Top-right vertex
-            0.5f, -0.5f, 0.0f, //Bottom-right vertex
-            -0.5f, -0.5f, 0.0f, //Bottom-left vertex
-        };
-        double[] bVertices =
-        {
-            -0.5f,  0.5f, -1.0f,  //Top-left vertex
-            0.5f,  0.5f, -1.0f,  //Top-right vertex
-            0.5f, -0.5f, -1.0f, //Bottom-right vertex
-            -0.5f, -0.5f, -1.0f, //Bottom-left vertex
-        };
-        double[] lVertices =
-        {
-            0.5f,  0.5f, -1.0f,  //Top-left vertex
-            0.5f,  0.5f, 0.0f,  //Top-right vertex
-            0.5f, -0.5f, 0.0f, //Bottom-right vertex
-            0.5f, -0.5f, -1.0f, //Bottom-left vertex
-        };
-        double[] rVertices =
-        {
-            -0.5f,  0.5f, -1.0f,  //Top-left vertex
-            -0.5f,  0.5f, 0.0f,  //Top-right vertex
-            -0.5f, -0.5f, 0.0f, //Bottom-right vertex
-            -0.5f, -0.5f, -1.0f, //Bottom-left vertex
-        };
-        double[] tVertices =
-        {
-            0.5f, 0.5f, -1.0f,  //Top-left vertex
-            -0.5f, 0.5f, -1.0f,  //Top-right vertex
-            -0.5f, 0.5f, 0.0f, //Bottom-right vertex
-            0.5f, 0.5f, 0.0f, //Bottom-left vertex
-        };
-        double[] dVertices =
-        {
-            0.5f, -0.5f, -1.0f,  //Top-left vertex
-            -0.5f, -0.5f, -1.0f,  //Top-right vertex
-            -0.5f, -0.5f, 0.0f, //Bottom-right vertex
-            0.5f, -0.5f, 0.0f, //Bottom-left vertex
-        };
+﻿// Left
+                GL.Color3(1.0, 1.0, 0.0);
+                GL.Vertex3(-10.0, 10.0, 10.0);
+                GL.Vertex3(-10.0, 10.0, -10.0);
+                GL.Vertex3(-10.0, -10.0, -10.0);
+                GL.Vertex3(-10.0, -10.0, 10.0);
+
+                // Right
+                GL.Color3(1.0, 0.0, 1.0);
+                GL.Vertex3(10.0, 10.0, 10.0);
+                GL.Vertex3(10.0, 10.0, -10.0);
+                GL.Vertex3(10.0, -10.0, -10.0);
+                GL.Vertex3(10.0, -10.0, 10.0);
+                
+                // Bottom
+                GL.Color3(0.0, 1.0, 1.0);
+                GL.Vertex3(10.0, -10.0, 10.0);
+                GL.Vertex3(10.0, -10.0, -10.0);
+                GL.Vertex3(-10.0, -10.0, -10.0);
+                GL.Vertex3(-10.0, -10.0, 10.0);
+                
+                // Top
+                GL.Color3(1.0, 0.0, 0.0);
+                GL.Vertex3(10.0, 10.0, 10.0);
+                GL.Vertex3(10.0, 10.0, -10.0);
+                GL.Vertex3(-10.0, 10.0, -10.0);
+                GL.Vertex3(-10.0, 10.0, 10.0);
+                
+                // Back
+                GL.Color3(0.0, 1.0, 0.0);
+                GL.Vertex3(10.0, 10.0, -10.0);
+                GL.Vertex3(10.0, -10.0, -10.0);
+                GL.Vertex3(-10.0, -10.0, -10.0);
+                GL.Vertex3(-10.0, 10.0, -10.0);
+                
+                // Forward
+                GL.Color3(0.0, 0.0, 1.0);
+                GL.Vertex3(10.0, 10.0, 10.0);
+                GL.Vertex3(10.0, -10.0, 10.0);
+                GL.Vertex3(-10.0, -10.0, 10.0);
+                GL.Vertex3(-10.0, 10.0, 10.0);

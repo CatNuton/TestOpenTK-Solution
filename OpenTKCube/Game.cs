@@ -1,4 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL;
+using OpenTK.Lib;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
@@ -9,7 +10,91 @@ namespace OpenTKCube
 {
     public class Game : GameWindow
     {
+        double[] platformVertices =
+        {
+            10.0, -10.0, 10.0,
+            10.0, -10.0, -10.0,
+            -10.0, -10.0, -10.0,
+            -10.0, -10.0, 10.0,
+        };
+        double[] platformColors =
+        {
+            8, 0, 41
+        };
+
+        double[] colors =
+        {
+            //Left
+            1.0, 1.0, 0.0,
+            //Right
+            1.0, 0.0, 1.0,
+            //Bottom
+            0.0, 1.0, 1.0,
+            //Top
+            1.0, 0.0, 0.0,
+            //Back
+            0.0, 1.0, 0.0,
+            //Forward
+            0.0, 0.0, 1.0,
+        };
+
+        double[][] vertices =
+        {
+            // Left
+            new double[]
+            {
+                -10.0, 10.0, 10.0,
+                -10.0, 10.0, -10.0,
+                -10.0, -10.0, -10.0,
+                -10.0, -10.0, 10.0,
+            },
+            // Right
+            new double[]
+            {
+                10.0, 10.0, 10.0,
+                10.0, 10.0, -10.0,
+                10.0, -10.0, -10.0,
+                10.0, -10.0, 10.0,
+            },
+            // Bottom
+            new double[]
+            {
+                10.0, -10.0, 10.0,
+                10.0, -10.0, -10.0,
+                -10.0, -10.0, -10.0,
+                -10.0, -10.0, 10.0,
+            },
+            // Top
+            new double[]
+            {
+                10.0, 10.0, 10.0,
+                10.0, 10.0, -10.0,
+                -10.0, 10.0, -10.0,
+                -10.0, 10.0, 10.0,
+            },
+
+            // Back
+            new double[]
+            {
+                10.0, 10.0, -10.0,
+                10.0, -10.0, -10.0,
+                -10.0, -10.0, -10.0,
+                -10.0, 10.0, -10.0,
+            },
+
+            // Forward
+            new double[] 
+            {
+                10.0, 10.0, 10.0,
+                10.0, -10.0, 10.0,
+                -10.0, -10.0, 10.0,
+                -10.0, 10.0, 10.0,
+            },
+        };
+
+        double adder = 0.01f;
         double theta = 0;
+
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) :
             base(gameWindowSettings, nativeWindowSettings)
         {
@@ -25,12 +110,15 @@ namespace OpenTKCube
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
+
             GL.Viewport(0, 0, e.Width, e.Height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            var matrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45),
-                e.Width / e.Height, 1.0f, 100.0f);
-            GL.LoadMatrix(ref matrix);
+
+            float aspectRatio = (float)e.Width / (float)e.Height;
+            var perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), aspectRatio, 0.1f, 100.0f);
+            GL.LoadMatrix(ref perspectiveMatrix);
+
             GL.MatrixMode(MatrixMode.Modelview);
         }
 
@@ -46,88 +134,26 @@ namespace OpenTKCube
             //Changing matrix
             GL.PushMatrix();
 
-            GL.Translate(0.0, 0.0, -45.0);
+            GL.Translate(0.0, 0.0, -55.0);
             GL.Rotate(90.0f, 0.0f, 0.1f, 0.1f);
             GL.Rotate(theta, 0.1f, 0.1f, 0.1f);
-            GL.Scale(0.8f, 0.8f, 0.8f);
+            GL.Scale(1.0f, 1.0f, 1.0f);
 
-            GL.Begin(PrimitiveType.Quads);
-                GL.Color3(1.0, 1.0, 0.0);
-                GL.Vertex3(-10.0, 10.0, 10.0);
-                GL.Vertex3(-10.0, 10.0, -10.0);
-                GL.Vertex3(-10.0, -10.0, -10.0);
-                GL.Vertex3(-10.0, -10.0, 10.0);
-
-                GL.Color3(1.0, 0.0, 1.0);
-                GL.Vertex3(10.0, 10.0, 10.0);
-                GL.Vertex3(10.0, 10.0, -10.0);
-                GL.Vertex3(10.0, -10.0, -10.0);
-                GL.Vertex3(10.0, -10.0, 10.0);
-
-                GL.Color3(0.0, 1.0, 1.0);
-                GL.Vertex3(10.0, -10.0, 10.0);
-                GL.Vertex3(10.0, -10.0, -10.0);
-                GL.Vertex3(-10.0, -10.0, -10.0);
-                GL.Vertex3(-10.0, -10.0, 10.0);
-
-                GL.Color3(1.0, 0.0, 0.0);
-                GL.Vertex3(10.0, 10.0, 10.0);
-                GL.Vertex3(10.0, 10.0, -10.0);
-                GL.Vertex3(-10.0, 10.0, -10.0);
-                GL.Vertex3(-10.0, 10.0, 10.0);
-
-                GL.Color3(0.0, 1.0, 0.0);
-                GL.Vertex3(10.0, 10.0, -10.0);
-                GL.Vertex3(10.0, -10.0, -10.0);
-                GL.Vertex3(-10.0, -10.0, -10.0);
-                GL.Vertex3(-10.0, 10.0, -10.0);
-
-                GL.Color3(0.0, 0.0, 1.0);
-                GL.Vertex3(10.0, 10.0, 10.0);
-                GL.Vertex3(10.0, -10.0, 10.0);
-                GL.Vertex3(-10.0, -10.0, 10.0);
-                GL.Vertex3(-10.0, 10.0, 10.0);
-            GL.End();
+            Drawer.DrawCube(colors, vertices);
             //Setting matrix to default
             GL.PopMatrix();
             #endregion
 
             #region Cube2
+            GL.PushMatrix();
+
             GL.Color3(1.0f, 1.0f, 1.0f);
-            GL.Translate(0.0f, -15.0, -45.0);
-            GL.Scale(1.0f, 0.1f, 1.0f);
+            GL.Translate(0.0f, -2.0, -55.0);
+            GL.Scale(1.5f, 1.5f, 1.5f);
 
-            GL.Begin(PrimitiveType.Quads);
-            GL.Vertex3(-10.0, 10.0, 10.0);
-            GL.Vertex3(-10.0, 10.0, -10.0);
-            GL.Vertex3(-10.0, -10.0, -10.0);
-            GL.Vertex3(-10.0, -10.0, 10.0);
+            Drawer.DrawRect3(platformVertices, platformColors);
 
-            GL.Vertex3(10.0, 10.0, 10.0);
-            GL.Vertex3(10.0, 10.0, -10.0);
-            GL.Vertex3(10.0, -10.0, -10.0);
-            GL.Vertex3(10.0, -10.0, 10.0);
-
-            GL.Vertex3(10.0, -10.0, 10.0);
-            GL.Vertex3(10.0, -10.0, -10.0);
-            GL.Vertex3(-10.0, -10.0, -10.0);
-            GL.Vertex3(-10.0, -10.0, 10.0);
-
-            GL.Vertex3(10.0, 10.0, 10.0);
-            GL.Vertex3(10.0, 10.0, -10.0);
-            GL.Vertex3(-10.0, 10.0, -10.0);
-            GL.Vertex3(-10.0, 10.0, 10.0);
-
-            GL.Vertex3(10.0, 10.0, -10.0);
-            GL.Vertex3(10.0, -10.0, -10.0);
-            GL.Vertex3(-10.0, -10.0, -10.0);
-            GL.Vertex3(-10.0, 10.0, -10.0);
-
-            GL.Vertex3(10.0, 10.0, 10.0);
-            GL.Vertex3(10.0, -10.0, 10.0);
-            GL.Vertex3(-10.0, -10.0, 10.0);
-            GL.Vertex3(-10.0, 10.0, 10.0);
-            GL.End();
+            GL.PopMatrix();
             #endregion
 
             SwapBuffers();
@@ -154,11 +180,19 @@ namespace OpenTKCube
             }
             if (KeyboardState.IsKeyDown(Keys.Left))
             {
-                theta += 0.1f;
+                theta += adder;
             }
             if (KeyboardState.IsKeyDown(Keys.Right))
             {
-                theta -= 0.1f;
+                theta -= adder;
+            }
+            if (KeyboardState.IsKeyPressed(Keys.Period) || KeyboardState.IsKeyPressed(Keys.KeyPadAdd))
+            {
+                adder += 0.01f;
+            }
+            if (KeyboardState.IsKeyPressed(Keys.Minus) || KeyboardState.IsKeyPressed(Keys.KeyPadSubtract))
+            {
+                adder -= 0.01f;
             }
         }
     }
