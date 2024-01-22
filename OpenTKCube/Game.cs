@@ -173,7 +173,7 @@ namespace OpenTKCube
                 {
                     WindowState = WindowState.Fullscreen;
                 }
-                else
+                else if (WindowState == WindowState.Fullscreen)
                 {
                     WindowState = WindowState.Normal;
                 }
