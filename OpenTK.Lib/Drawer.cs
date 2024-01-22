@@ -48,6 +48,7 @@ namespace OpenTK.Lib
             }
             GL.End();
         }
+        //Cube
         public static void DrawCube(double[] colors, double[][] vertices)
         {
             int rgb = 3;
