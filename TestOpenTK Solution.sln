@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTKTriangle", "TestOpenT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTKCubes", "OpenTKCube\OpenTKCubes.csproj", "{033E3D2B-5F55-4164-82EE-26F2543B2B0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Lib", "OpenTK.Lib\OpenTK.Lib.csproj", "{6F40F479-7763-4541-B282-4DD90FE3AFAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTK.Lib", "OpenTK.Lib\OpenTK.Lib.csproj", "{6F40F479-7763-4541-B282-4DD90FE3AFAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTKVisualization", "OpenTKVisualization\OpenTKVisualization.csproj", "{68DC18E3-55E1-4E4A-A728-A1FDF4FF12BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6F40F479-7763-4541-B282-4DD90FE3AFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F40F479-7763-4541-B282-4DD90FE3AFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F40F479-7763-4541-B282-4DD90FE3AFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DC18E3-55E1-4E4A-A728-A1FDF4FF12BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DC18E3-55E1-4E4A-A728-A1FDF4FF12BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DC18E3-55E1-4E4A-A728-A1FDF4FF12BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DC18E3-55E1-4E4A-A728-A1FDF4FF12BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
