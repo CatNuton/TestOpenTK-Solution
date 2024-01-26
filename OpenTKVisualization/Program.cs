@@ -22,6 +22,7 @@ namespace OpenTKVisualization
             {
                 FOV = 45,
                 PolyMode = PolygonMode.Fill,
+                IsLightingEnabled = true,
             };
             using (var game = new Game(nws, vwo))
             {

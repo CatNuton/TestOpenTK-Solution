@@ -31,10 +31,9 @@ namespace OpenTKVisualization
             base.OnLoad();
             GL.ClearColor(Color.Aqua);
             GL.Enable(EnableCap.DepthTest);
-            GL.Enable(EnableCap.Lighting); // Включаем освещение
-            GL.Enable(EnableCap.Light0); // Включаем источник света 0 (первый источник)
+            GL.Enable(EnableCap.Lighting);
+            GL.Enable(EnableCap.Light0);
 
-            // Настраиваем направленный источник света (свет с бесконечными лучами)
             GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 1.0f, 1.0f, 0.0f }); // Направление света
             GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 0.2f, 0.2f, 0.2f, 1.0f }); // Цвет фонового освещения
             GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f, 1.0f }); // Цвет рассеянного света

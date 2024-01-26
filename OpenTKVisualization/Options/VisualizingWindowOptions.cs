@@ -9,7 +9,7 @@ namespace OpenTKVisualization.Options
 {
     public class VisualizingWindowOptions
     {
-        public float FOV { get; set; } = 45.0f;
+        public float FOV { get; set; }
         public PolygonMode PolyMode { get; set; }
         public bool IsLightingEnabled { get; set; }
     }
