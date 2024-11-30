@@ -59,6 +59,14 @@ namespace TestOpenTK.Primitives
             #region VAO
             vao = GL.GenVertexArray();  //Creating Buffer
             GL.BindVertexArray(vao);    //Applying buffer
+            #endregion
+            #region EBO
+            ebo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(float), indices,
+                BufferUsageHint.StaticDraw);
+            #endregion
+            #region Parameters
             //VertexAttribPointer arguments:
             //  Which vertex attribute we want to configure.
             //  The size of the vertex attribute (vec3 - 3)
@@ -73,12 +81,6 @@ namespace TestOpenTK.Primitives
             GL.VertexAttribPointer(shader.GetAttribLocation("aColor"), 3, VertexAttribPointerType.Float,
                 false, 3 * sizeof(float), 1);
             GL.EnableVertexAttribArray(shader.GetAttribLocation("aColor"));
-            #endregion
-            #region EBO
-            ebo = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(float), indices,
-                BufferUsageHint.StaticDraw);
             #endregion
 
             shader.Use();

@@ -61,20 +61,6 @@ namespace TestOpenTK.Textures
             #region VAO
             vao = GL.GenVertexArray();  //Creating Buffer
             GL.BindVertexArray(vao);    //Applying buffer
-            //VertexAttribPointer arguments:
-            //  Which vertex attribute we want to configure.
-            //  The size of the vertex attribute (vec3 - 3)
-            //  Type of the data
-            //  Should we normalize data
-            //  Space between the vertices https://opentk.net/learn/chapter1/img/2-vertex_attribute_pointer.png
-            //  Start point
-            GL.EnableVertexAttribArray(shader.GetAttribLocation("aPosition"));  //Activating vertex attribute.
-            GL.VertexAttribPointer(shader.GetAttribLocation("aPosition"), 3, VertexAttribPointerType.Float,
-                false, 5 * sizeof(float), 0);
-
-            GL.EnableVertexAttribArray(shader.GetAttribLocation("aTexCoord"));
-            GL.VertexAttribPointer(shader.GetAttribLocation("aTexCoord"), 2, VertexAttribPointerType.Float,
-                false, 5 * sizeof(float), 3 * sizeof(float));
             #endregion
             #region EBO
             ebo = GL.GenBuffer();
@@ -82,6 +68,23 @@ namespace TestOpenTK.Textures
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices,
                 BufferUsageHint.StaticDraw);
             #endregion
+            #region Parameters
+            //VertexAttribPointer arguments:
+            //  Which vertex attribute we want to configure.
+            //  The size of the vertex attribute (vec3 - 3)
+            //  Type of the data
+            //  Should we normalize data
+            //  Space between the vertices https://opentk.net/learn/chapter1/img/2-vertex_attribute_pointer.png
+            //  Start point
+            GL.VertexAttribPointer(shader.GetAttribLocation("aPosition"), 3, VertexAttribPointerType.Float,
+                false, 5 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(shader.GetAttribLocation("aPosition"));  //Activating vertex attribute.
+
+            GL.VertexAttribPointer(shader.GetAttribLocation("aTexCoord"), 2, VertexAttribPointerType.Float,
+                false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(shader.GetAttribLocation("aTexCoord"));
+            #endregion
+
             shader.Use();
 
             texture = Texture.SetTexture("Data//IMG.jpg", TextureWrapMode.Repeat, TextureWrapMode.Repeat,
